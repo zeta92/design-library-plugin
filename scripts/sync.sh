@@ -6,13 +6,16 @@ DESIGNS_DIR="$PLUGIN_DIR/designs/awesome-design-md"
 REPO_URL="https://github.com/VoltAgent/awesome-design-md.git"
 CATALOG_FILE="$PLUGIN_DIR/skills/design-library/references/catalog.md"
 
+echo "=== Design Library Sync: $(date) ==="
+
 # Clone or pull
 if [ ! -d "$DESIGNS_DIR/.git" ]; then
   echo "Cloning awesome-design-md..."
   git clone --depth=1 "$REPO_URL" "$DESIGNS_DIR"
 else
   echo "Pulling latest designs..."
-  git -C "$DESIGNS_DIR" pull --ff-only
+  git -C "$DESIGNS_DIR" fetch --depth=1 origin
+  git -C "$DESIGNS_DIR" reset --hard origin/HEAD
 fi
 
 # Generate catalog from actual directory listing
@@ -23,6 +26,7 @@ if [ ! -d "$DESIGN_MD_DIR" ]; then
 fi
 
 echo "Generating catalog..."
+mkdir -p "$(dirname "$CATALOG_FILE")"
 cat > "$CATALOG_FILE" << 'HEADER'
 # Design Library Catalog
 
@@ -34,20 +38,22 @@ Use brand name in any prompt or with `/design <brand>`.
 HEADER
 
 # List all brand directories alphabetically
+shopt -s nullglob
+BRAND_COUNT=0
 for brand_dir in "$DESIGN_MD_DIR"/*/; do
   brand=$(basename "$brand_dir")
   if [ -f "$brand_dir/DESIGN.md" ]; then
     echo "- \`$brand\`" >> "$CATALOG_FILE"
+    ((BRAND_COUNT++)) || true
   fi
 done
-
-BRAND_COUNT=$(grep -c "^\- \`" "$CATALOG_FILE" || echo "0")
+shopt -u nullglob
 echo "" >> "$CATALOG_FILE"
 echo "_Total: $BRAND_COUNT brands_" >> "$CATALOG_FILE"
 
 # Install daily cron (6am) if not already present
-CRON_CMD="0 6 * * * bash $PLUGIN_DIR/scripts/sync.sh >> /tmp/design-library-sync.log 2>&1"
-if ! crontab -l 2>/dev/null | grep -q "design-library.*sync.sh"; then
+CRON_CMD="0 6 * * * $PLUGIN_DIR/scripts/sync.sh >> /tmp/design-library-sync.log 2>&1"
+if ! crontab -l 2>/dev/null | grep -qF "$PLUGIN_DIR/scripts/sync.sh"; then
   (crontab -l 2>/dev/null; echo "$CRON_CMD") | crontab -
   echo "Cron job installed: daily sync at 6am"
 else
