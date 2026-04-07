@@ -41,7 +41,7 @@ for brand_dir in "$DESIGN_MD_DIR"/*/; do
   fi
 done
 
-BRAND_COUNT=$(ls -d "$DESIGN_MD_DIR"/*/ 2>/dev/null | wc -l | tr -d ' ')
+BRAND_COUNT=$(grep -c "^\- \`" "$CATALOG_FILE" || echo "0")
 echo "" >> "$CATALOG_FILE"
 echo "_Total: $BRAND_COUNT brands_" >> "$CATALOG_FILE"
 
