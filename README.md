@@ -19,6 +19,12 @@ Global Claude Code plugin — 58 brand design systems always available.
 
 The hook detects brand names automatically and injects the design context.
 
+## Installation
+
+Clone or copy this plugin to `~/.claude/plugins/local/design-library/`, then register it in your Claude Code settings. Restart Claude Code for the plugin to take effect.
+
+**Source:** https://github.com/zeta92/design-library-plugin
+
 ## Setup
 
 Run once after install:

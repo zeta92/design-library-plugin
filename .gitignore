@@ -1,0 +1,5 @@
+# Local design library clone (populated by scripts/sync.sh)
+designs/
+
+# Sync logs
+*.log
