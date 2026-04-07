@@ -1,0 +1,11 @@
+{
+  "name": "design-library",
+  "version": "1.0.0",
+  "description": "Access 58 real-world brand design systems (Stripe, Linear, Vercel, Google, Anthropic, etc.) in any Claude session. Load, mix, and apply DESIGN.md files via slash command or natural language.",
+  "author": {
+    "name": "zeta"
+  },
+  "homepage": "https://github.com/VoltAgent/awesome-design-md",
+  "license": "MIT",
+  "keywords": ["design", "ui", "frontend", "design-system", "brand"]
+}
