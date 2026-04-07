@@ -6,7 +6,7 @@ description: Use when working on UI, frontend, or design tasks, or when a brand 
 # Design Library Skill
 
 You have access to a local library of DESIGN.md files from 58 real-world companies.
-See `references/catalog.md` for the full list of available brands.
+See `/home/zeta/.claude/plugins/local/design-library/skills/design-library/references/catalog.md` for the full list, or run `/design list`.
 
 ## What is a DESIGN.md
 
@@ -21,6 +21,8 @@ Each DESIGN.md has 9 sections:
 8. **Responsive Behavior** — breakpoints, mobile adaptations
 9. **Agent Prompt Guide** — how to instruct AI agents to produce this design
 
+> Note: Section titles vary slightly across brands (e.g., section 7 may be "Interaction & Motion" or "Dark Mode" rather than "Do's and Don'ts"). Always read the actual section headers from the loaded DESIGN.md file rather than assuming fixed names.
+
 ## How to Apply a Single Brand
 
 When a DESIGN.md has been loaded as context:
@@ -28,8 +30,10 @@ When a DESIGN.md has been loaded as context:
 2. Read Typography Rules — apply the font stack and scale
 3. Read Component Stylings — reproduce button, input, and card styles faithfully
 4. Read Layout Principles — use the grid and spacing system
-5. Apply the Agent Prompt Guide to your code generation approach
-6. Respect the Do's and Don'ts section
+5. Read the Depth & Elevation section — apply shadow tokens and z-index values
+6. Read the Responsive Behavior section — respect breakpoints and mobile adaptations
+7. Respect the Do's and Don'ts section
+8. Apply the Agent Prompt Guide to your code generation approach
 
 ## How to Mix Multiple Brands
 
@@ -47,7 +51,8 @@ When mixing A + B:
    Fusion: [Brand A] colors + [Brand B] typography + ...
    Rationale: [brief explanation of why this combination works]
    ```
-5. The first-named brand wins on any section not explicitly assigned
+5. The first-named brand also wins for all unlisted sections (Visual Theme, Do's and Don'ts, Responsive Behavior, Agent Prompt Guide).
+6. The first-named brand wins on any section not explicitly assigned
 
 ## Design File Location
 
