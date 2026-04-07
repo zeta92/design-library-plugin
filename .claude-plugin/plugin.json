@@ -6,7 +6,6 @@
     "name": "zeta92"
   },
   "homepage": "https://github.com/zeta92/design-library-plugin",
-  "upstream": "https://github.com/VoltAgent/awesome-design-md",
   "license": "MIT",
   "keywords": ["design", "ui", "frontend", "design-system", "brand"]
 }
