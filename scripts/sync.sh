@@ -15,7 +15,7 @@ if [ ! -d "$DESIGNS_DIR/.git" ]; then
 else
   echo "Pulling latest designs..."
   git -C "$DESIGNS_DIR" fetch --depth=1 origin
-  git -C "$DESIGNS_DIR" reset --hard origin/HEAD
+  git -C "$DESIGNS_DIR" reset --hard FETCH_HEAD
 fi
 
 # ── ui-ux-pro-max-skill ──────────────────────────────────────────────────────
@@ -26,7 +26,7 @@ if [ ! -d "$UI_UX_DIR/.git" ]; then
 else
   echo "Pulling ui-ux-pro-max-skill..."
   git -C "$UI_UX_DIR" fetch --depth=1 origin
-  git -C "$UI_UX_DIR" reset --hard origin/HEAD
+  git -C "$UI_UX_DIR" reset --hard FETCH_HEAD
 fi
 
 # ── vercel agent-skills ──────────────────────────────────────────────────────
@@ -37,7 +37,7 @@ if [ ! -d "$VERCEL_DIR/.git" ]; then
 else
   echo "Pulling vercel agent-skills..."
   git -C "$VERCEL_DIR" fetch --depth=1 origin
-  git -C "$VERCEL_DIR" reset --hard origin/HEAD
+  git -C "$VERCEL_DIR" reset --hard FETCH_HEAD
 fi
 
 # ── Owl-Listener/designer-skills ─────────────────────────────────────────────
@@ -48,7 +48,7 @@ if [ ! -d "$DESIGNER_DIR/.git" ]; then
 else
   echo "Pulling designer-skills..."
   git -C "$DESIGNER_DIR" fetch --depth=1 origin
-  git -C "$DESIGNER_DIR" reset --hard origin/HEAD
+  git -C "$DESIGNER_DIR" reset --hard FETCH_HEAD
 fi
 
 # ── kylezantos/design-motion-principles ──────────────────────────────────────
@@ -59,7 +59,7 @@ if [ ! -d "$MOTION_DIR/.git" ]; then
 else
   echo "Pulling design-motion-principles..."
   git -C "$MOTION_DIR" fetch --depth=1 origin
-  git -C "$MOTION_DIR" reset --hard origin/HEAD
+  git -C "$MOTION_DIR" reset --hard FETCH_HEAD
 fi
 
 # ── Community-Access/accessibility-agents ────────────────────────────────────
@@ -70,7 +70,7 @@ if [ ! -d "$A11Y_DIR/.git" ]; then
 else
   echo "Pulling accessibility-agents..."
   git -C "$A11Y_DIR" fetch --depth=1 origin
-  git -C "$A11Y_DIR" reset --hard origin/HEAD
+  git -C "$A11Y_DIR" reset --hard FETCH_HEAD
 fi
 
 # Generate catalog from actual directory listing
