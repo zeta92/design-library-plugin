@@ -18,6 +18,61 @@ else
   git -C "$DESIGNS_DIR" reset --hard origin/HEAD
 fi
 
+# ── ui-ux-pro-max-skill ──────────────────────────────────────────────────────
+UI_UX_DIR="$PLUGIN_DIR/designs/ui-ux-pro-max-skill"
+if [ ! -d "$UI_UX_DIR/.git" ]; then
+  echo "Cloning ui-ux-pro-max-skill..."
+  git clone --depth=1 https://github.com/nextlevelbuilder/ui-ux-pro-max-skill.git "$UI_UX_DIR"
+else
+  echo "Pulling ui-ux-pro-max-skill..."
+  git -C "$UI_UX_DIR" fetch --depth=1 origin
+  git -C "$UI_UX_DIR" reset --hard origin/HEAD
+fi
+
+# ── vercel agent-skills ──────────────────────────────────────────────────────
+VERCEL_DIR="$PLUGIN_DIR/designs/agent-skills"
+if [ ! -d "$VERCEL_DIR/.git" ]; then
+  echo "Cloning vercel agent-skills..."
+  git clone --depth=1 https://github.com/vercel-labs/agent-skills.git "$VERCEL_DIR"
+else
+  echo "Pulling vercel agent-skills..."
+  git -C "$VERCEL_DIR" fetch --depth=1 origin
+  git -C "$VERCEL_DIR" reset --hard origin/HEAD
+fi
+
+# ── Owl-Listener/designer-skills ─────────────────────────────────────────────
+DESIGNER_DIR="$PLUGIN_DIR/designs/designer-skills"
+if [ ! -d "$DESIGNER_DIR/.git" ]; then
+  echo "Cloning designer-skills..."
+  git clone --depth=1 https://github.com/Owl-Listener/designer-skills.git "$DESIGNER_DIR"
+else
+  echo "Pulling designer-skills..."
+  git -C "$DESIGNER_DIR" fetch --depth=1 origin
+  git -C "$DESIGNER_DIR" reset --hard origin/HEAD
+fi
+
+# ── kylezantos/design-motion-principles ──────────────────────────────────────
+MOTION_DIR="$PLUGIN_DIR/designs/design-motion-principles"
+if [ ! -d "$MOTION_DIR/.git" ]; then
+  echo "Cloning design-motion-principles..."
+  git clone --depth=1 https://github.com/kylezantos/design-motion-principles.git "$MOTION_DIR"
+else
+  echo "Pulling design-motion-principles..."
+  git -C "$MOTION_DIR" fetch --depth=1 origin
+  git -C "$MOTION_DIR" reset --hard origin/HEAD
+fi
+
+# ── Community-Access/accessibility-agents ────────────────────────────────────
+A11Y_DIR="$PLUGIN_DIR/designs/accessibility-agents"
+if [ ! -d "$A11Y_DIR/.git" ]; then
+  echo "Cloning accessibility-agents..."
+  git clone --depth=1 https://github.com/Community-Access/accessibility-agents.git "$A11Y_DIR"
+else
+  echo "Pulling accessibility-agents..."
+  git -C "$A11Y_DIR" fetch --depth=1 origin
+  git -C "$A11Y_DIR" reset --hard origin/HEAD
+fi
+
 # Generate catalog from actual directory listing
 DESIGN_MD_DIR="$DESIGNS_DIR/design-md"
 if [ ! -d "$DESIGN_MD_DIR" ]; then
@@ -60,4 +115,4 @@ else
   echo "Cron job already present, skipping"
 fi
 
-echo "Sync complete. $BRAND_COUNT brands available."
+echo "Sync complete. $BRAND_COUNT brands + 5 design skills available."
