@@ -3,3 +3,9 @@ designs/
 
 # Sync logs
 *.log
+
+# Visual brainstorming sessions
+.superpowers/
+
+# Git worktrees
+.worktrees/
