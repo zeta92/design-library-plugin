@@ -84,7 +84,7 @@ Valid sections for granular mix: `colors`, `typography`, `components`, `layout`,
 
 ## Mode: List
 
-Read `/home/zeta/.claude/plugins/local/design-library/skills/design-library/references/catalog.md` and display it formatted as a list grouped by category.
+Read `~/.claude/plugins/local/design-library/skills/design-library/references/catalog.md` and display it formatted as a list grouped by category.
 
 ## Mode: Sync
 

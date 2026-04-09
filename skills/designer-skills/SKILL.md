@@ -18,35 +18,35 @@ Read the specific skill file based on what the user needs. Base path:
 ## Available plugins and skills
 
 ### UI Design
-Path: `ui-design/<skill>/SKILL.md`
+Path: `ui-design/skills/<skill>/SKILL.md`
 Skills: `color-system` · `dark-mode-design` · `data-visualization` · `illustration-style` · `layout-grid` · `responsive-design` · `spacing-system` · `typography-scale` · `visual-hierarchy`
 
 ### Design Systems
-Path: `design-systems/<skill>/SKILL.md`
+Path: `design-systems/skills/<skill>/SKILL.md`
 Skills: `accessibility-audit` · `component-spec` · `design-token` · `documentation-template` · `icon-system` · `naming-convention` · `pattern-library` · `theming-system`
 
 ### Interaction Design
-Path: `interaction-design/<skill>/SKILL.md`
+Path: `interaction-design/skills/<skill>/SKILL.md`
 Skills: `animation-principles` · `error-handling-ux` · `feedback-patterns` · `gesture-patterns` · `loading-states` · `micro-interaction-spec` · `state-machine`
 
 ### UX Strategy
-Path: `ux-strategy/<skill>/SKILL.md`
+Path: `ux-strategy/skills/<skill>/SKILL.md`
 Skills: `competitive-analysis` · `design-brief` · `design-principles` · `experience-map` · `north-star-vision` · `opportunity-framework` · `stakeholder-alignment` · `metrics-definition`
 
 ### Design Research
-Path: `design-research/<skill>/SKILL.md`
+Path: `design-research/skills/<skill>/SKILL.md`
 Skills: `affinity-diagram` · `card-sort-analysis` · `empathy-map` · `interview-script` · `jobs-to-be-done` · `journey-map` · `user-persona` · `usability-test-plan`
 
 ### Design Ops
-Path: `design-ops/<skill>/SKILL.md`
+Path: `design-ops/skills/<skill>/SKILL.md`
 Skills: `design-critique` · `design-qa-checklist` · `design-review-process` · `design-sprint-plan` · `handoff-spec` · `team-workflow`
 
 ### Prototyping & Testing
-Path: `prototyping-testing/<skill>/SKILL.md`
+Path: `prototyping-testing/skills/<skill>/SKILL.md`
 Skills: `a-b-test-design` · `accessibility-test-plan` · `heuristic-evaluation` · `prototype-strategy` · `test-scenario` · `user-flow-diagram` · `wireframe-spec`
 
 ### Designer Toolkit
-Path: `designer-toolkit/<skill>/SKILL.md`
+Path: `designer-toolkit/skills/<skill>/SKILL.md`
 Skills: `case-study` · `design-rationale` · `design-token-audit` · `presentation-deck` · `ux-writing`
 
 ## How to use

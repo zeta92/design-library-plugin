@@ -36,8 +36,8 @@ fi
 
 # ── Level 2: only a README, no source files ───────────────────────────────────
 if [ -z "$project_type" ] && [ -f "$WORKING_DIR/README.md" ]; then
-  other_files=$(find "$WORKING_DIR" -maxdepth 1 -not -name "README.md" \
-    -not -name ".git" -not -name "." 2>/dev/null | wc -l)
+  other_files=$(find "$WORKING_DIR" -maxdepth 1 -mindepth 1 \
+    -not -name "README.md" -not -name ".git" 2>/dev/null | wc -l)
   if [ "$other_files" -eq 0 ]; then
     readme_preview=$(head -10 "$WORKING_DIR/README.md" 2>/dev/null || echo "")
     MSG="[DESIGN SUITE] Encontré un README pero sin código todavía. Voy a leer el README para inferir qué design skills necesitas.\n\n${readme_preview}\n\nDespués de leer el README completo, activa los skills más relevantes e indica cuáles son con una línea como: 'Skills activados: X · Y · Z. ¿Correcto?'"

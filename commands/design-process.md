@@ -28,7 +28,7 @@ description: Access 63 specialized design skills across the full design lifecycl
    ```
 3. Once the user selects a phase and skill, load:
    ```
-   ~/.claude/plugins/local/design-library/designs/designer-skills/<plugin>/<skill>/SKILL.md
+   ~/.claude/plugins/local/design-library/designs/designer-skills/<plugin>/skills/<skill>/SKILL.md
    ```
 4. Follow all instructions in that skill file
 
