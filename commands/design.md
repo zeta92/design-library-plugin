@@ -1,6 +1,6 @@
 ---
 name: design
-description: Load and apply brand design systems from the awesome-design-md library. Supports single brand, multi-brand mixing, auto-suggest, list, and sync.
+description: Load and apply brand design systems from the awesome-design-md library. Supports single brand, multi-brand mixing, re-analyze + skill activation, list, and sync.
 ---
 
 # /design Command
@@ -102,7 +102,7 @@ Show this usage summary:
 /design <brand>                    — load one brand
 /design stripe + linear            — mix two brands
 /design stripe:colors + linear:typography  — granular mix
-/design ?                          — auto-suggest based on your project
+/design ?                          — re-analyze project + activate skills
 /design list                       — show all 58 brands
 /design sync                       — update local library
 ```
