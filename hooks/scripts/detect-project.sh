@@ -41,7 +41,7 @@ if [ -z "$project_type" ] && [ -f "$WORKING_DIR/README.md" ]; then
   if [ "$other_files" -eq 0 ]; then
     readme_preview=$(head -10 "$WORKING_DIR/README.md" 2>/dev/null || echo "")
     MSG="[DESIGN SUITE] Encontré un README pero sin código todavía. Voy a leer el README para inferir qué design skills necesitas.\n\n${readme_preview}\n\nDespués de leer el README completo, activa los skills más relevantes e indica cuáles son con una línea como: 'Skills activados: X · Y · Z. ¿Correcto?'"
-    printf '%s' "$MSG" | jq -Rs '{"systemMessage": .}'
+    printf '%b' "$MSG" | jq -Rs '{"systemMessage": .}'
     exit 0
   fi
 fi
@@ -49,12 +49,13 @@ fi
 # ── Level 3: empty directory ──────────────────────────────────────────────────
 if [ -z "$project_type" ]; then
   MSG="[DESIGN SUITE DISPONIBLE] El directorio está vacío. Cuando el usuario pida construir UI o una interfaz, hazle exactamente estas 3 preguntas (una a la vez, no todas juntas):\n1. ¿Qué estás construyendo? (landing · app · design system · otro)\n2. ¿Tienes alguna marca o estilo visual en mente?\n3. ¿Hay algún requisito especial? (accesibilidad, animaciones, i18n…)\n\nUna vez respondidas, activa los skills correspondientes e informa al usuario qué comandos tiene disponibles."
-  printf '%s' "$MSG" | jq -Rs '{"systemMessage": .}'
+  printf '%b' "$MSG" | jq -Rs '{"systemMessage": .}'
   exit 0
 fi
 
 # ── Output Level 1 message ────────────────────────────────────────────────────
-SKILL_LIST=$(IFS=' · '; echo "${active_skills[*]}")
+SKILL_LIST=$(printf '%s · ' "${active_skills[@]}")
+SKILL_LIST="${SKILL_LIST% · }"
 MSG="[DESIGN SUITE ACTIVO] Proyecto detectado: ${project_type}\nSkills cargados: ${SKILL_LIST}\n\nComandos disponibles:\n  /design <marca>     — cargar sistema de diseño de marca\n  /ui-ux              — generar design system completo\n  /guidelines         — auditar código UI (100+ reglas)\n  /motion             — auditar animaciones\n  /a11y               — auditar accesibilidad (WCAG 2.2 AA)\n  /design-process     — acceder a 63 skills de diseño\n  /design ?           — re-analizar proyecto"
 
-printf '%s' "$MSG" | jq -Rs '{"systemMessage": .}'
+printf '%b' "$MSG" | jq -Rs '{"systemMessage": .}'
