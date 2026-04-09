@@ -16,7 +16,7 @@ Parse the argument string passed to this command:
 | `<brand>` | Single brand |
 | `<brand> + <brand>` | Simple mix |
 | `<brand>:<section> + <brand>:<section>` | Granular mix |
-| `?` | Auto-suggest |
+| `?` | Re-analyze project + activate skills |
 | `list` | Show catalog |
 | `sync` | Update local library |
 | _(no argument)_ | Show usage help |
@@ -58,15 +58,29 @@ Valid sections for granular mix: `colors`, `typography`, `components`, `layout`,
 4. Output a Fusion Summary showing exact section mapping.
 5. Apply the merged result to the session.
 
-## Mode: Auto-Suggest (`?`)
+## Mode: Re-analyze (`?`)
 
-1. Read the current project context:
-   - Look for existing `package.json`, color variables, CSS files, README
-   - Identify the project's purpose (SaaS, fintech, dev tool, consumer app, etc.)
-2. Read `/home/zeta/.claude/plugins/local/design-library/skills/design-library/references/catalog.md`
-3. Select 2-3 best matching brands with reasoning.
-4. Ask the user to confirm: "Based on your project, I'd suggest: [Brand A] (reason) or [Brand B] (reason). Which should I load?"
-5. Load the chosen brand.
+1. Scan the current working directory:
+   - Check `package.json` for framework and dependencies
+   - Check for CSS files, component files, and directory structure
+   - Check for `README.md` if no source files exist
+2. Determine the project type (landing page, SaaS app, design system, etc.)
+3. Select 2-3 best-fit brand suggestions from the catalog (existing behavior)
+4. Determine which skills are relevant for this project type:
+   - Landing page / marketing → ui-ux-pro-max, motion
+   - Design system / component library → web-design-guidelines, designer-skills, a11y
+   - SaaS app / dashboard → ui-ux-pro-max, web-design-guidelines, a11y
+5. Output a combined summary:
+   ```
+   Project detected: [type]
+
+   Suggested brands: [Brand A] (reason), [Brand B] (reason)
+   Active skills: [skill list with commands]
+
+   Load a brand: /design [brand]
+   Or activate a skill directly: /ui-ux · /guidelines · /motion · /a11y · /design-process
+   ```
+6. Ask: "Which brand should I load, or do you want to start with a skill?"
 
 ## Mode: List
 
