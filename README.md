@@ -1,6 +1,6 @@
 # design-library-plugin
 
-> Global Claude Code plugin — 58 brand design systems always available via `/design` command or natural language.
+> Global Claude Code plugin — 58 brand design systems + 5 curated design skills, always available.
 
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](LICENSE)
 
@@ -8,9 +8,16 @@
 
 ## Overview
 
-`design-library-plugin` is a Claude Code plugin that gives you instant access to 58 brand design systems (Stripe, Linear, Vercel, Figma, Google, Anthropic, and more) directly inside your coding sessions.
+`design-library-plugin` is a Claude Code plugin that gives you instant access to a full design suite directly inside your coding sessions:
 
-Use it via a slash command or just speak naturally — the plugin detects brand names and injects the right design context automatically.
+- **58 brand design systems** (Stripe, Linear, Vercel, Figma, Google, Anthropic, and more)
+- **UI/UX Pro Max** — 67 styles, 161 palettes, 57 font pairings, 99 UX guidelines (61k ⭐)
+- **Web Design Guidelines** — 100+ rules for a11y, forms, dark mode, typography, i18n (24k ⭐)
+- **Designer Skills** — 63 skills across the full design lifecycle (505 ⭐)
+- **Motion Design Principles** — animation audits via 3 designer perspectives (256 ⭐)
+- **Accessibility Agents** — 11 WCAG 2.2 AA specialists (214 ⭐)
+
+The plugin auto-detects your project type at session start and activates the relevant skills automatically.
 
 **Design data source:** [VoltAgent/awesome-design-md](https://github.com/VoltAgent/awesome-design-md)
 
@@ -18,19 +25,17 @@ Use it via a slash command or just speak naturally — the plugin detects brand 
 
 ## Installation
 
-Clone or copy this plugin to the Claude Code plugins directory:
-
 ```bash
 git clone https://github.com/zeta92/design-library-plugin.git ~/.claude/plugins/local/design-library
 ```
 
-Then register it in your Claude Code settings and restart Claude Code for the plugin to take effect.
+Then register it in your Claude Code settings and restart Claude Code.
 
 ---
 
 ## Setup
 
-Run once after install to clone the design library locally and set up a daily auto-sync cron job:
+Run once after install to download all design data and skills, and set up a daily auto-sync:
 
 ```bash
 bash ~/.claude/plugins/local/design-library/scripts/sync.sh
@@ -40,43 +45,47 @@ bash ~/.claude/plugins/local/design-library/scripts/sync.sh
 
 ## Usage
 
+### Auto-activation
+
+When you start a Claude session, the plugin automatically detects your project type and activates the relevant skills. You'll see a message like:
+
+```
+[DESIGN SUITE ACTIVO] Proyecto detectado: web app
+Skills cargados: design-library · ui-ux-pro-max · web-design-guidelines
+```
+
 ### Slash commands
 
 | Command | Description |
 |---|---|
-| `/design stripe` | Load one brand's full design system |
-| `/design stripe + linear` | Mix two brands |
-| `/design stripe:colors + linear:typography` | Granular mix by section |
-| `/design ?` | Auto-suggest based on your project |
-| `/design list` | Show all 58 brands by category |
-| `/design sync` | Pull latest designs from GitHub |
+| `/design <brand>` | Load one brand's design system |
+| `/design A + B` | Mix two brands |
+| `/design ?` | Re-analyze project and suggest skills + brands |
+| `/design list` | Show all 58 brands |
+| `/design sync` | Update all design data and skills |
+| `/ui-ux` | Generate a complete design system for your project |
+| `/guidelines` | Audit UI code against 100+ web design rules |
+| `/motion` | Audit animations via Emil Kowalski / Jakub Krehel / Jhey Tompkins |
+| `/a11y` | Run a full WCAG 2.2 AA accessibility audit |
+| `/design-process` | Access 63 design skills across the full lifecycle |
 
-### Natural language (no command needed)
+### Natural language
 
-Just describe what you want — the hook detects brand names automatically:
+The plugin also detects brand names in your prompts automatically — no command needed:
 
 - *"Diseñame esto como Google y Anthropic"*
-- *"Hazlo con el estilo de Stripe"*
-- *"Build me a page like Figma"*
+- *"Build me a page like Stripe"*
 
 ---
 
-## Sections available for granular mix
+## Sections for granular brand mixing
 
 `colors` · `typography` · `components` · `layout` · `elevation`
 
 ---
 
-## Design data
-
-All design system data is sourced from **[VoltAgent/awesome-design-md](https://github.com/VoltAgent/awesome-design-md)** — a community-maintained collection of brand design systems in Markdown format.
-
-The `sync.sh` script keeps your local copy up to date automatically.
-
----
-
 ## License
 
-This project is licensed under the **Apache License 2.0**. See the [LICENSE](LICENSE) file for details.
+Apache License 2.0. See [LICENSE](LICENSE).
 
 Copyright 2026 zeta92
