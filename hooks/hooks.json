@@ -1,6 +1,18 @@
 {
-  "description": "Auto-detect brand names in user prompts and inject design context",
+  "description": "Auto-detect project type on session start and inject brand context on each prompt",
   "hooks": {
+    "SessionStart": [
+      {
+        "matcher": "*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash ${CLAUDE_PLUGIN_ROOT}/hooks/scripts/detect-project.sh",
+            "timeout": 15
+          }
+        ]
+      }
+    ],
     "UserPromptSubmit": [
       {
         "matcher": "*",
