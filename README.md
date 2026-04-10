@@ -1,4 +1,6 @@
-# design-library-plugin
+# The Design Library
+
+<img src="docs/cover.svg" alt="The Design Library — Claude Code plugin" width="100%"/>
 
 > Global Claude Code plugin — 58 brand design systems + 5 curated design skills, always available.
 

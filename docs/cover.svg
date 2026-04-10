@@ -1,0 +1,212 @@
+<svg width="1280" height="640" viewBox="0 0 1280 640" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- Background grid -->
+    <pattern id="grid" width="48" height="48" patternUnits="userSpaceOnUse">
+      <path d="M 48 0 L 0 0 0 48" fill="none" stroke="rgba(255,255,255,0.04)" stroke-width="0.5"/>
+    </pattern>
+
+    <!-- Ambient glows -->
+    <radialGradient id="glowLeft" cx="15%" cy="85%" r="55%">
+      <stop offset="0%" stop-color="#4F46E5" stop-opacity="0.35"/>
+      <stop offset="100%" stop-color="#4F46E5" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="glowRight" cx="85%" cy="15%" r="45%">
+      <stop offset="0%" stop-color="#7C3AED" stop-opacity="0.28"/>
+      <stop offset="100%" stop-color="#7C3AED" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="glowCenter" cx="50%" cy="50%" r="40%">
+      <stop offset="0%" stop-color="#6366F1" stop-opacity="0.08"/>
+      <stop offset="100%" stop-color="#6366F1" stop-opacity="0"/>
+    </radialGradient>
+
+    <!-- Title gradient -->
+    <linearGradient id="titleGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#FFFFFF"/>
+      <stop offset="55%" stop-color="#E0E7FF"/>
+      <stop offset="100%" stop-color="#A5B4FC"/>
+    </linearGradient>
+
+    <!-- Card gradient -->
+    <linearGradient id="cardGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="rgba(99,102,241,0.08)"/>
+      <stop offset="100%" stop-color="rgba(124,58,237,0.04)"/>
+    </linearGradient>
+
+    <!-- Badge gradients -->
+    <linearGradient id="badgeA" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#4F46E5" stop-opacity="0.18"/>
+      <stop offset="100%" stop-color="#7C3AED" stop-opacity="0.18"/>
+    </linearGradient>
+    <linearGradient id="badgeB" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#7C3AED" stop-opacity="0.14"/>
+      <stop offset="100%" stop-color="#4F46E5" stop-opacity="0.14"/>
+    </linearGradient>
+
+    <!-- Separator gradient -->
+    <linearGradient id="sepGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="rgba(99,102,241,0)" />
+      <stop offset="30%" stop-color="rgba(99,102,241,0.3)"/>
+      <stop offset="70%" stop-color="rgba(99,102,241,0.3)"/>
+      <stop offset="100%" stop-color="rgba(99,102,241,0)"/>
+    </linearGradient>
+
+    <!-- Clip for card -->
+    <clipPath id="cardClip">
+      <rect x="776" y="88" width="424" height="464" rx="20"/>
+    </clipPath>
+  </defs>
+
+  <!-- ── Background ───────────────────────────────────────────────── -->
+  <rect width="1280" height="640" fill="#0A0A12"/>
+  <rect width="1280" height="640" fill="url(#grid)"/>
+  <ellipse cx="192" cy="544" rx="480" ry="320" fill="url(#glowLeft)"/>
+  <ellipse cx="1088" cy="96" rx="400" ry="280" fill="url(#glowRight)"/>
+  <rect width="1280" height="640" fill="url(#glowCenter)"/>
+
+  <!-- ── Left: Text content ─────────────────────────────────────── -->
+
+  <!-- Eyebrow label -->
+  <rect x="100" y="168" width="220" height="26" rx="13" fill="rgba(99,102,241,0.12)" stroke="rgba(99,102,241,0.35)" stroke-width="1"/>
+  <text x="210" y="186" font-family="'SF Mono','Fira Code','Consolas',monospace" font-size="11" font-weight="500" fill="#818CF8" text-anchor="middle" letter-spacing="1.5">CLAUDE CODE PLUGIN</text>
+
+  <!-- Main title line 1 -->
+  <text x="100" y="272" font-family="-apple-system,'Inter','Helvetica Neue',sans-serif" font-size="76" font-weight="800" fill="url(#titleGrad)" letter-spacing="-2">The Design</text>
+  <!-- Main title line 2 -->
+  <text x="100" y="358" font-family="-apple-system,'Inter','Helvetica Neue',sans-serif" font-size="76" font-weight="800" fill="url(#titleGrad)" letter-spacing="-2">Library</text>
+
+  <!-- Separator -->
+  <line x1="100" y1="386" x2="460" y2="386" stroke="rgba(99,102,241,0.4)" stroke-width="1"/>
+
+  <!-- Subtitle -->
+  <text x="100" y="418" font-family="-apple-system,'Inter','Helvetica Neue',sans-serif" font-size="18" fill="#94A3B8" letter-spacing="-0.2">58 brand design systems · 5 expert skills</text>
+  <text x="100" y="444" font-family="-apple-system,'Inter','Helvetica Neue',sans-serif" font-size="18" fill="#94A3B8" letter-spacing="-0.2">for Claude Code</text>
+
+  <!-- Command badges -->
+  <!-- /design -->
+  <rect x="100" y="484" width="92" height="30" rx="7" fill="url(#badgeA)" stroke="rgba(99,102,241,0.45)" stroke-width="1"/>
+  <text x="146" y="504" font-family="'SF Mono','Fira Code','Consolas',monospace" font-size="12" fill="#A5B4FC" text-anchor="middle">/design</text>
+
+  <!-- /ui-ux -->
+  <rect x="202" y="484" width="82" height="30" rx="7" fill="url(#badgeB)" stroke="rgba(124,58,237,0.4)" stroke-width="1"/>
+  <text x="243" y="504" font-family="'SF Mono','Fira Code','Consolas',monospace" font-size="12" fill="#C4B5FD" text-anchor="middle">/ui-ux</text>
+
+  <!-- /a11y -->
+  <rect x="294" y="484" width="72" height="30" rx="7" fill="url(#badgeA)" stroke="rgba(99,102,241,0.45)" stroke-width="1"/>
+  <text x="330" y="504" font-family="'SF Mono','Fira Code','Consolas',monospace" font-size="12" fill="#A5B4FC" text-anchor="middle">/a11y</text>
+
+  <!-- /motion -->
+  <rect x="376" y="484" width="84" height="30" rx="7" fill="url(#badgeB)" stroke="rgba(124,58,237,0.4)" stroke-width="1"/>
+  <text x="418" y="504" font-family="'SF Mono','Fira Code','Consolas',monospace" font-size="12" fill="#C4B5FD" text-anchor="middle">/motion</text>
+
+  <!-- /guidelines -->
+  <rect x="100" y="524" width="110" height="30" rx="7" fill="url(#badgeA)" stroke="rgba(99,102,241,0.45)" stroke-width="1"/>
+  <text x="155" y="544" font-family="'SF Mono','Fira Code','Consolas',monospace" font-size="12" fill="#A5B4FC" text-anchor="middle">/guidelines</text>
+
+  <!-- /design-process -->
+  <rect x="220" y="524" width="148" height="30" rx="7" fill="url(#badgeB)" stroke="rgba(124,58,237,0.4)" stroke-width="1"/>
+  <text x="294" y="544" font-family="'SF Mono','Fira Code','Consolas',monospace" font-size="12" fill="#C4B5FD" text-anchor="middle">/design-process</text>
+
+  <!-- ── Right: Brand card ──────────────────────────────────────── -->
+  <!-- Card background -->
+  <rect x="776" y="88" width="424" height="464" rx="20" fill="url(#cardGrad)" stroke="rgba(255,255,255,0.07)" stroke-width="1"/>
+
+  <!-- Card inner shimmer line at top -->
+  <rect x="777" y="89" width="422" height="1" rx="1" fill="rgba(255,255,255,0.12)" clip-path="url(#cardClip)"/>
+
+  <!-- Card title -->
+  <text x="988" y="132" font-family="-apple-system,'Inter','Helvetica Neue',sans-serif" font-size="11" font-weight="600" fill="#6366F1" text-anchor="middle" letter-spacing="2">BRAND DESIGN SYSTEMS</text>
+
+  <!-- Separator inside card -->
+  <line x1="800" y1="145" x2="1176" y2="145" stroke="rgba(99,102,241,0.18)" stroke-width="1"/>
+
+  <!-- Brand pills — 6 rows × 3 columns -->
+  <!-- Helper: pill at (cx, cy) -->
+
+  <!-- Row 1: y=172 -->
+  <rect x="806" y="158" width="100" height="28" rx="14" fill="rgba(79,70,229,0.13)" stroke="rgba(99,102,241,0.32)" stroke-width="1"/>
+  <text x="856" y="177" font-family="-apple-system,'Inter',sans-serif" font-size="12" font-weight="500" fill="#C7D2FE" text-anchor="middle">Stripe</text>
+
+  <rect x="918" y="158" width="100" height="28" rx="14" fill="rgba(124,58,237,0.13)" stroke="rgba(139,92,246,0.32)" stroke-width="1"/>
+  <text x="968" y="177" font-family="-apple-system,'Inter',sans-serif" font-size="12" font-weight="500" fill="#DDD6FE" text-anchor="middle">Linear</text>
+
+  <rect x="1030" y="158" width="100" height="28" rx="14" fill="rgba(79,70,229,0.13)" stroke="rgba(99,102,241,0.32)" stroke-width="1"/>
+  <text x="1080" y="177" font-family="-apple-system,'Inter',sans-serif" font-size="12" font-weight="500" fill="#C7D2FE" text-anchor="middle">Vercel</text>
+
+  <!-- Row 2 -->
+  <rect x="806" y="200" width="100" height="28" rx="14" fill="rgba(124,58,237,0.13)" stroke="rgba(139,92,246,0.32)" stroke-width="1"/>
+  <text x="856" y="219" font-family="-apple-system,'Inter',sans-serif" font-size="12" font-weight="500" fill="#DDD6FE" text-anchor="middle">Figma</text>
+
+  <rect x="918" y="200" width="100" height="28" rx="14" fill="rgba(79,70,229,0.13)" stroke="rgba(99,102,241,0.32)" stroke-width="1"/>
+  <text x="968" y="219" font-family="-apple-system,'Inter',sans-serif" font-size="12" font-weight="500" fill="#C7D2FE" text-anchor="middle">Google</text>
+
+  <rect x="1030" y="200" width="100" height="28" rx="14" fill="rgba(124,58,237,0.13)" stroke="rgba(139,92,246,0.32)" stroke-width="1"/>
+  <text x="1080" y="219" font-family="-apple-system,'Inter',sans-serif" font-size="12" font-weight="500" fill="#DDD6FE" text-anchor="middle">Airbnb</text>
+
+  <!-- Row 3 -->
+  <rect x="806" y="242" width="100" height="28" rx="14" fill="rgba(79,70,229,0.13)" stroke="rgba(99,102,241,0.32)" stroke-width="1"/>
+  <text x="856" y="261" font-family="-apple-system,'Inter',sans-serif" font-size="12" font-weight="500" fill="#C7D2FE" text-anchor="middle">Notion</text>
+
+  <rect x="918" y="242" width="100" height="28" rx="14" fill="rgba(124,58,237,0.13)" stroke="rgba(139,92,246,0.32)" stroke-width="1"/>
+  <text x="968" y="261" font-family="-apple-system,'Inter',sans-serif" font-size="12" font-weight="500" fill="#DDD6FE" text-anchor="middle">Apple</text>
+
+  <rect x="1030" y="242" width="100" height="28" rx="14" fill="rgba(79,70,229,0.13)" stroke="rgba(99,102,241,0.32)" stroke-width="1"/>
+  <text x="1080" y="261" font-family="-apple-system,'Inter',sans-serif" font-size="12" font-weight="500" fill="#C7D2FE" text-anchor="middle">GitHub</text>
+
+  <!-- Row 4 -->
+  <rect x="806" y="284" width="100" height="28" rx="14" fill="rgba(124,58,237,0.13)" stroke="rgba(139,92,246,0.32)" stroke-width="1"/>
+  <text x="856" y="303" font-family="-apple-system,'Inter',sans-serif" font-size="12" font-weight="500" fill="#DDD6FE" text-anchor="middle">Spotify</text>
+
+  <rect x="918" y="284" width="100" height="28" rx="14" fill="rgba(79,70,229,0.13)" stroke="rgba(99,102,241,0.32)" stroke-width="1"/>
+  <text x="968" y="303" font-family="-apple-system,'Inter',sans-serif" font-size="12" font-weight="500" fill="#C7D2FE" text-anchor="middle">Slack</text>
+
+  <rect x="1030" y="284" width="100" height="28" rx="14" fill="rgba(124,58,237,0.13)" stroke="rgba(139,92,246,0.32)" stroke-width="1"/>
+  <text x="1080" y="303" font-family="-apple-system,'Inter',sans-serif" font-size="12" font-weight="500" fill="#DDD6FE" text-anchor="middle">Discord</text>
+
+  <!-- Row 5 -->
+  <rect x="806" y="326" width="100" height="28" rx="14" fill="rgba(79,70,229,0.13)" stroke="rgba(99,102,241,0.32)" stroke-width="1"/>
+  <text x="856" y="345" font-family="-apple-system,'Inter',sans-serif" font-size="12" font-weight="500" fill="#C7D2FE" text-anchor="middle">Framer</text>
+
+  <rect x="918" y="326" width="100" height="28" rx="14" fill="rgba(124,58,237,0.13)" stroke="rgba(139,92,246,0.32)" stroke-width="1"/>
+  <text x="968" y="345" font-family="-apple-system,'Inter',sans-serif" font-size="12" font-weight="500" fill="#DDD6FE" text-anchor="middle">Anthropic</text>
+
+  <rect x="1030" y="326" width="100" height="28" rx="14" fill="rgba(79,70,229,0.13)" stroke="rgba(99,102,241,0.32)" stroke-width="1"/>
+  <text x="1080" y="345" font-family="-apple-system,'Inter',sans-serif" font-size="12" font-weight="500" fill="#C7D2FE" text-anchor="middle">Tailwind</text>
+
+  <!-- Row 6 -->
+  <rect x="806" y="368" width="100" height="28" rx="14" fill="rgba(124,58,237,0.13)" stroke="rgba(139,92,246,0.32)" stroke-width="1"/>
+  <text x="856" y="387" font-family="-apple-system,'Inter',sans-serif" font-size="12" font-weight="500" fill="#DDD6FE" text-anchor="middle">Loom</text>
+
+  <rect x="918" y="368" width="100" height="28" rx="14" fill="rgba(79,70,229,0.13)" stroke="rgba(99,102,241,0.32)" stroke-width="1"/>
+  <text x="968" y="387" font-family="-apple-system,'Inter',sans-serif" font-size="12" font-weight="500" fill="#C7D2FE" text-anchor="middle">Miro</text>
+
+  <rect x="1030" y="368" width="100" height="28" rx="14" fill="rgba(99,102,241,0.08)" stroke="rgba(99,102,241,0.22)" stroke-width="1"/>
+  <text x="1080" y="387" font-family="-apple-system,'Inter',sans-serif" font-size="12" fill="#818CF8" text-anchor="middle">+ 46 more</text>
+
+  <!-- Card divider -->
+  <line x1="800" y1="416" x2="1176" y2="416" stroke="rgba(99,102,241,0.18)" stroke-width="1"/>
+
+  <!-- Skills footer inside card -->
+  <text x="988" y="444" font-family="-apple-system,'Inter',sans-serif" font-size="11" font-weight="600" fill="#6366F1" text-anchor="middle" letter-spacing="1.5">INCLUDED SKILLS</text>
+
+  <!-- Skill tags row 1 -->
+  <rect x="806" y="456" width="108" height="24" rx="5" fill="rgba(99,102,241,0.1)" stroke="rgba(99,102,241,0.25)" stroke-width="1"/>
+  <text x="860" y="473" font-family="'SF Mono','Fira Code','Consolas',monospace" font-size="10" fill="#818CF8" text-anchor="middle">UI/UX Pro Max</text>
+
+  <rect x="926" y="456" width="108" height="24" rx="5" fill="rgba(124,58,237,0.1)" stroke="rgba(139,92,246,0.25)" stroke-width="1"/>
+  <text x="980" y="473" font-family="'SF Mono','Fira Code','Consolas',monospace" font-size="10" fill="#A78BFA" text-anchor="middle">Web Guidelines</text>
+
+  <rect x="1046" y="456" width="108" height="24" rx="5" fill="rgba(99,102,241,0.1)" stroke="rgba(99,102,241,0.25)" stroke-width="1"/>
+  <text x="1100" y="473" font-family="'SF Mono','Fira Code','Consolas',monospace" font-size="10" fill="#818CF8" text-anchor="middle">Designer Skills</text>
+
+  <!-- Skill tags row 2 -->
+  <rect x="866" y="490" width="108" height="24" rx="5" fill="rgba(124,58,237,0.1)" stroke="rgba(139,92,246,0.25)" stroke-width="1"/>
+  <text x="920" y="507" font-family="'SF Mono','Fira Code','Consolas',monospace" font-size="10" fill="#A78BFA" text-anchor="middle">Motion Design</text>
+
+  <rect x="986" y="490" width="108" height="24" rx="5" fill="rgba(99,102,241,0.1)" stroke="rgba(99,102,241,0.25)" stroke-width="1"/>
+  <text x="1040" y="507" font-family="'SF Mono','Fira Code','Consolas',monospace" font-size="10" fill="#818CF8" text-anchor="middle">A11y Agents</text>
+
+  <!-- ── Bottom bar ──────────────────────────────────────────────── -->
+  <line x1="0" y1="600" x2="1280" y2="600" stroke="rgba(99,102,241,0.12)" stroke-width="1"/>
+  <text x="100" y="626" font-family="'SF Mono','Fira Code','Consolas',monospace" font-size="12" fill="#334155" letter-spacing="0.5">github.com/zeta92/design-library-plugin</text>
+  <text x="1180" y="626" font-family="'SF Mono','Fira Code','Consolas',monospace" font-size="12" fill="#334155" text-anchor="end" letter-spacing="0.5">v2.1.0</text>
+</svg>
