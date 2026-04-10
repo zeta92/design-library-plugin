@@ -11,7 +11,7 @@ if [ ! -d "$PLUGIN_DIR/designs/awesome-design-md" ]; then
     nohup bash "$PLUGIN_DIR/scripts/sync.sh" > "$LOG_FILE" 2>&1 &
   fi
 
-  MSG="[DESIGN SUITE] Primera carga detectada: los datos de diseño se están descargando en segundo plano (~1-2 min). Informa al usuario de esto con un mensaje breve. Cuando terminen, el plugin estará completamente activo. Puede seguir trabajando con normalidad mientras tanto."
+  MSG="[DESIGN SUITE] First run detected: design data is being downloaded in the background (~1-2 min). Let the user know briefly. The plugin will be fully active once the download completes. They can continue working normally in the meantime."
   printf '%s' "$MSG" | jq -Rs '{"systemMessage": .}'
   exit 0
 fi
@@ -48,7 +48,7 @@ if [ -z "$project_type" ] && [ -f "$WORKING_DIR/README.md" ]; then
     -not -name "README.md" -not -name ".git" 2>/dev/null | wc -l)
   if [ "$other_files" -eq 0 ]; then
     readme_preview=$(head -10 "$WORKING_DIR/README.md" 2>/dev/null || echo "")
-    MSG="[DESIGN SUITE] Encontré un README pero sin código todavía. Voy a leer el README para inferir qué design skills necesitas.\n\n${readme_preview}\n\nDespués de leer el README completo, activa los skills más relevantes e indica cuáles son con una línea como: 'Skills activados: X · Y · Z. ¿Correcto?'"
+    MSG="[DESIGN SUITE] Found a README but no code yet. Read the full README to infer which design skills are needed.\n\n${readme_preview}\n\nAfter reading the README, activate the most relevant skills and let the user know with a line like: 'Skills activated: X · Y · Z. Sound right?'"
     printf '%b' "$MSG" | jq -Rs '{"systemMessage": .}'
     exit 0
   fi
@@ -56,7 +56,7 @@ fi
 
 # ── Level 3: empty directory ──────────────────────────────────────────────────
 if [ -z "$project_type" ]; then
-  MSG="[DESIGN SUITE DISPONIBLE] El directorio está vacío. Cuando el usuario pida construir UI o una interfaz, hazle exactamente estas 3 preguntas (una a la vez, no todas juntas):\n1. ¿Qué estás construyendo? (landing · app · design system · otro)\n2. ¿Tienes alguna marca o estilo visual en mente?\n3. ¿Hay algún requisito especial? (accesibilidad, animaciones, i18n…)\n\nUna vez respondidas, activa los skills correspondientes e informa al usuario qué comandos tiene disponibles."
+  MSG="[DESIGN SUITE AVAILABLE] Empty directory. When the user asks to build a UI or interface, ask exactly these 3 questions (one at a time, not all at once):\n1. What are you building? (landing · app · design system · other)\n2. Do you have a brand or visual style in mind?\n3. Any special requirements? (accessibility, animations, i18n…)\n\nOnce answered, activate the relevant skills and let the user know which commands are available."
   printf '%b' "$MSG" | jq -Rs '{"systemMessage": .}'
   exit 0
 fi
@@ -64,6 +64,6 @@ fi
 # ── Output Level 1 message ────────────────────────────────────────────────────
 SKILL_LIST=$(printf '%s · ' "${active_skills[@]}")
 SKILL_LIST="${SKILL_LIST% · }"
-MSG="[DESIGN SUITE ACTIVO] Proyecto detectado: ${project_type}\nSkills cargados: ${SKILL_LIST}\n\nComandos disponibles:\n  /design <marca>     — cargar sistema de diseño de marca\n  /ui-ux              — generar design system completo\n  /guidelines         — auditar código UI (100+ reglas)\n  /motion             — auditar animaciones\n  /a11y               — auditar accesibilidad (WCAG 2.2 AA)\n  /design-process     — acceder a 63 skills de diseño\n  /design ?           — re-analizar proyecto"
+MSG="[DESIGN SUITE ACTIVE] Project detected: ${project_type}\nSkills loaded: ${SKILL_LIST}\n\nAvailable commands:\n  /design <brand>     — load a brand design system\n  /ui-ux              — generate a complete design system\n  /guidelines         — audit UI code (100+ rules)\n  /motion             — audit animations\n  /a11y               — accessibility audit (WCAG 2.2 AA)\n  /design-process     — access 63 design skills\n  /design ?           — re-analyze project"
 
 printf '%b' "$MSG" | jq -Rs '{"systemMessage": .}'
