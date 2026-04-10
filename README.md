@@ -19,7 +19,18 @@
 
 The plugin auto-detects your project type at session start and activates the relevant skills automatically.
 
-**Design data source:** [VoltAgent/awesome-design-md](https://github.com/VoltAgent/awesome-design-md)
+---
+
+## Projects powering this plugin
+
+| Project | Used for | Stars |
+|---|---|---|
+| [VoltAgent/awesome-design-md](https://github.com/VoltAgent/awesome-design-md) | 58 brand design systems (DESIGN.md files) | — |
+| [nextlevelbuilder/ui-ux-pro-max-skill](https://github.com/nextlevelbuilder/ui-ux-pro-max-skill) | `/ui-ux` — complete design system generator | 61k ⭐ |
+| [vercel-labs/agent-skills](https://github.com/vercel-labs/agent-skills) | `/guidelines` — 100+ web interface rules | 24k ⭐ |
+| [Owl-Listener/designer-skills](https://github.com/Owl-Listener/designer-skills) | `/design-process` — 63 design lifecycle skills | 505 ⭐ |
+| [kylezantos/design-motion-principles](https://github.com/kylezantos/design-motion-principles) | `/motion` — animation audit via 3 designers | 256 ⭐ |
+| [Community-Access/accessibility-agents](https://github.com/Community-Access/accessibility-agents) | `/a11y` — 11 WCAG 2.2 AA specialist agents | 214 ⭐ |
 
 ---
 
