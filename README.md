@@ -25,21 +25,37 @@ The plugin auto-detects your project type at session start and activates the rel
 
 ## Installation
 
+### Step 1 — Clone the plugin
+
 ```bash
 git clone https://github.com/zeta92/design-library-plugin.git ~/.claude/plugins/local/design-library
 ```
 
-Then register it in your Claude Code settings and restart Claude Code.
+> The plugin must live at `~/.claude/plugins/local/design-library`. Do not change this path.
 
----
-
-## Setup
-
-Run once after install to download all design data and skills, and set up a daily auto-sync:
+### Step 2 — Run the setup script
 
 ```bash
 bash ~/.claude/plugins/local/design-library/scripts/sync.sh
 ```
+
+This script does everything in one shot:
+
+- Downloads all 58 brand design systems and the 5 external skill repos
+- Creates the local marketplace manifest needed by Claude Code
+- Registers the marketplace: `claude plugin marketplace add`
+- Installs the plugin: `claude plugin install design-library@local`
+- Sets up a daily cron job (6am) to keep design data up to date
+
+### Step 3 — Reload plugins in Claude Code
+
+Run this slash command inside any Claude Code session:
+
+```
+/reload-plugins
+```
+
+You should see: `Reloaded: 1 plugin · 10 skills · ...`
 
 ---
 
@@ -60,6 +76,7 @@ Skills cargados: design-library · ui-ux-pro-max · web-design-guidelines
 |---|---|
 | `/design <brand>` | Load one brand's design system |
 | `/design A + B` | Mix two brands |
+| `/design A:colors + B:typography` | Granular mix by section |
 | `/design ?` | Re-analyze project and suggest skills + brands |
 | `/design list` | Show all 58 brands |
 | `/design sync` | Update all design data and skills |
@@ -81,6 +98,22 @@ The plugin also detects brand names in your prompts automatically — no command
 ## Sections for granular brand mixing
 
 `colors` · `typography` · `components` · `layout` · `elevation`
+
+---
+
+## Updating
+
+To pull the latest design data:
+
+```bash
+bash ~/.claude/plugins/local/design-library/scripts/sync.sh
+```
+
+Or use the slash command inside Claude:
+
+```
+/design sync
+```
 
 ---
 

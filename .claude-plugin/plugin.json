@@ -1,11 +1,11 @@
 {
   "name": "design-library",
-  "version": "2.0.0",
-  "description": "A full design suite for Claude Code: 58 brand design systems + 5 curated design skills (UI/UX, web guidelines, motion, accessibility, full design process). Auto-activates skills based on your project type.",
+  "version": "2.1.0",
+  "description": "A full design suite for Claude Code: 58 brand design systems + UI/UX, accessibility, motion, design guidelines, and full design-process skills. Auto-selects skills based on your project type.",
   "author": {
     "name": "zeta92"
   },
   "homepage": "https://github.com/zeta92/design-library-plugin",
   "license": "Apache-2.0",
-  "keywords": ["design", "ui", "frontend", "design-system", "brand", "accessibility", "motion", "a11y"]
+  "keywords": ["design", "ui", "ux", "frontend", "design-system", "brand", "accessibility", "motion", "a11y"]
 }
