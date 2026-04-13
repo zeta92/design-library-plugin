@@ -15,22 +15,22 @@ fi
 # Each category targets natural language for one specific skill.
 
 # /motion — animation & motion design
-KW_MOTION="animat|transition|motion|hover effect|loading spinner|skeleton loader|scroll effect|parallax|micro.?interaction|easing|spring animation|bounce|fade in|slide in|page transition|keyframe|framer.?motion|\bgsap\b|lottie|css animation|animated component|entrance animation|exit animation|stagger|choreograph"
+KW_MOTION="animat|transition|motion|hover effect|loading spinner|skeleton loader|scroll effect|parallax|micro.?interaction|easing|spring animation|bounce|fade in|slide in|page transition|keyframe|framer.?motion|\bgsap\b|lottie|css animation|animated component|entrance animation|exit animation|stagger|choreograph|transición|animación|efecto de carga|scroll-driven|view transition|flip animation|swipe gesture"
 
 # /a11y — accessibility
-KW_A11Y="accessib|wcag|screen reader|\baria\b|color contrast|focus trap|keyboard nav|tab order|alt text|\ba11y\b|inclusive design|reduced motion|high contrast|semantic html|focus ring|focus.?visible|color.?blind|dyslexia|cognitive load|skip.?link|landmark|live region"
+KW_A11Y="accessib|wcag|screen reader|\baria\b|color contrast|focus trap|keyboard nav|tab order|alt text|\ba11y\b|inclusive design|reduced motion|high contrast|semantic html|focus ring|focus.?visible|color.?blind|dyslexia|cognitive load|skip.?link|landmark|live region|accesib|contraste de color|lector de pantalla|navegación por teclado"
 
 # /guidelines — UI audit & web best practices
-KW_GUIDELINES="\baudit\b|review (my|this|the) (ui|design|code|component|page)|critique|check (my|this) (ui|design)|best practices|improve (this|my) (ui|design)|dark mode support|responsive design|mobile.?first|touch target|form validation|error state|empty state|loading state|\bi18n\b|internationali[sz]|right.?to.?left|\brtl\b|web vitals|performance budget|image optimi|lazy load|font loading"
+KW_GUIDELINES="\baudit\b|review (my|this|the) (ui|design|code|component|page)|critique|check (my|this) (ui|design)|best practices|improve (this|my) (ui|design)|dark mode support|responsive design|mobile.?first|touch target|form validation|error state|empty state|loading state|\bi18n\b|internationali[sz]|right.?to.?left|\brtl\b|web vitals|performance budget|image optimi|lazy load|font loading|contrast ratio|visual hierarchy|layout shift|reflow|padding inconsistency"
 
 # /ui-ux — generating a design system or visual identity from scratch
-KW_UIUX="design system|color palette|font pairing|typography (scale|system|hierarchy|ramp)|spacing system|generate (a |the )?(ui|design|layout|theme)|create (a )?(design system|ui|interface) for|redesign|visual identity|brand identity|style guide|component (library|system)|design tokens?|build (ui|interface) from scratch|ui kit|theme generator|moodboard|look and feel"
+KW_UIUX="design system|color palette|font pairing|typography (scale|system|hierarchy|ramp)|spacing system|generate (a |the )?(ui|design|layout|theme)|create (a )?(design system|ui|interface) for|redesign|visual identity|brand identity|style guide|component (library|system)|design tokens?|build (ui|interface) from scratch|ui kit|theme generator|moodboard|look and feel|tailwind theme|css variables|custom properties|figma|theme config|paleta de colores|sistema de diseño|identidad visual"
 
 # /design-process — UX strategy and design lifecycle
 KW_PROCESS="wireframe|prototype|user research|user persona|user journey|information architecture|design sprint|design review|design handoff|user flow|site.?map|card sorting|usability test|design critique|ux strategy|service design|design thinking|jobs.?to.?be.?done|problem space|discovery phase|define phase|ideation|affinity map|design doc|design brief|stakeholder|design decision"
 
 # /design — brand-triggered design loading (softer gate for brand detection)
-KW_BRAND_TRIGGER="design|style|look|ui|interface|build|create|make|component|landing|like |inspired by|similar to|aesthetic|visual|theme"
+KW_BRAND_TRIGGER="diseña|diseñame|estilo visual|interfaz visual|maqueta|paleta de color|tipografía|rediseña|mockup|como.*stripe|como.*linear|como.*google|como.*vercel|como.*figma|como.*apple|like.*stripe|like.*linear|like.*vercel|\blike \b|inspired by|similar to|aesthetic|visual identity|design system|\bstyle of\b|\blooks like\b"
 
 # ── Gate: exit early if no design intent at all ───────────────────────────────
 ALL_KEYWORDS="${KW_MOTION}|${KW_A11Y}|${KW_GUIDELINES}|${KW_UIUX}|${KW_PROCESS}|${KW_BRAND_TRIGGER}"

@@ -1,6 +1,4 @@
-# The Design Library
-
-<img src="docs/cover.svg" alt="The Design Library — Claude Code plugin" width="100%"/>
+# The Design Library [![v2.1.0](https://img.shields.io/badge/version-v2.1.0-green.svg)](https://github.com/zeta92/design-library-plugin)
 
 > Global Claude Code plugin — 58 brand design systems + 5 curated design skills, always available.
 
@@ -10,78 +8,64 @@
 
 ## Overview
 
-`design-library-plugin` is a Claude Code plugin that gives you instant access to a full design suite directly inside your coding sessions:
+`design-library-plugin` gives you instant access to a professional design suite directly inside your Claude Code sessions. It combines 58 industry-standard brand design systems with specialized AI agents for UI/UX, accessibility, motion, and design processes.
 
-- **58 brand design systems** (Stripe, Linear, Vercel, Figma, Google, Anthropic, and more)
-- **UI/UX Pro Max** — 67 styles, 161 palettes, 57 font pairings, 99 UX guidelines (61k ⭐)
-- **Web Design Guidelines** — 100+ rules for a11y, forms, dark mode, typography, i18n (24k ⭐)
-- **Designer Skills** — 63 skills across the full design lifecycle (505 ⭐)
-- **Motion Design Principles** — animation audits via 3 designer perspectives (256 ⭐)
-- **Accessibility Agents** — 11 WCAG 2.2 AA specialists (214 ⭐)
+## Quick Start (30 seconds)
 
-The plugin auto-detects your project type at session start and activates the relevant skills automatically.
+```bash
+# 1. Clone the plugin
+git clone https://github.com/zeta92/design-library-plugin.git ~/.claude/plugins/local/design-library
 
----
+# 2. Run setup
+bash ~/.claude/plugins/local/design-library/scripts/sync.sh
 
-## Projects powering this plugin
+# 3. Reload Claude
+/reload-plugins
+```
 
-| Project | Used for | Stars |
-|---|---|---|
-| [VoltAgent/awesome-design-md](https://github.com/VoltAgent/awesome-design-md) | 58 brand design systems (DESIGN.md files) | — |
-| [nextlevelbuilder/ui-ux-pro-max-skill](https://github.com/nextlevelbuilder/ui-ux-pro-max-skill) | `/ui-ux` — complete design system generator | 61k ⭐ |
-| [vercel-labs/agent-skills](https://github.com/vercel-labs/agent-skills) | `/guidelines` — 100+ web interface rules | 24k ⭐ |
-| [Owl-Listener/designer-skills](https://github.com/Owl-Listener/designer-skills) | `/design-process` — 63 design lifecycle skills | 505 ⭐ |
-| [kylezantos/design-motion-principles](https://github.com/kylezantos/design-motion-principles) | `/motion` — animation audit via 3 designers | 256 ⭐ |
-| [Community-Access/accessibility-agents](https://github.com/Community-Access/accessibility-agents) | `/a11y` — 11 WCAG 2.2 AA specialist agents | 214 ⭐ |
+## What can I do with this?
+
+Transform your development workflow with natural language:
+
+- **"Make this component look like Linear's design system"** — Instant visual alignment.
+- **"Audit this form for accessibility issues"** — Deep WCAG 2.2 AA analysis.
+- **"Create a color palette for my SaaS dashboard"** — Generate cohesive, brand-aligned themes.
+- **"Review my animation code against motion design principles"** — Audit transitions and timing.
+- **"Walk me through a UX design sprint"** — Leverage 63 specialized design lifecycle skills.
 
 ---
 
 ## Installation
 
 ### Step 1 — Clone the plugin
-
+The plugin must live at `~/.claude/plugins/local/design-library`. Do not change this path.
 ```bash
 git clone https://github.com/zeta92/design-library-plugin.git ~/.claude/plugins/local/design-library
 ```
 
-> The plugin must live at `~/.claude/plugins/local/design-library`. Do not change this path.
-
 ### Step 2 — Run the setup script
-
+This script downloads all 58 brand systems, installs the 5 external skill repos, registers the marketplace, and sets up a daily sync cron job.
 ```bash
 bash ~/.claude/plugins/local/design-library/scripts/sync.sh
 ```
 
-This script does everything in one shot:
-
-- Downloads all 58 brand design systems and the 5 external skill repos
-- Creates the local marketplace manifest needed by Claude Code
-- Registers the marketplace: `claude plugin marketplace add`
-- Installs the plugin: `claude plugin install design-library@local`
-- Sets up a daily cron job (6am) to keep design data up to date
-
-### Step 3 — Reload plugins in Claude Code
-
+### Step 3 — Reload plugins
 Run this slash command inside any Claude Code session:
-
 ```
 /reload-plugins
 ```
-
-You should see: `Reloaded: 1 plugin · 10 skills · ...`
 
 ---
 
 ## Usage
 
 ### Auto-activation
-
-When you start a Claude session, the plugin automatically detects your project type and activates the relevant skills. You'll see a message like:
-
+The plugin detects your project type at session start. You will see a confirmation message like:
 ```
-[DESIGN SUITE ACTIVO] Proyecto detectado: web app
-Skills cargados: design-library · ui-ux-pro-max · web-design-guidelines
+[DESIGN SUITE ACTIVE] Project detected: web app
+Skills loaded: design-library · ui-ux-pro-max · web-design-guidelines
 ```
+This means the relevant design expertise is automatically loaded into your context.
 
 ### Slash commands
 
@@ -99,34 +83,50 @@ Skills cargados: design-library · ui-ux-pro-max · web-design-guidelines
 | `/a11y` | Run a full WCAG 2.2 AA accessibility audit |
 | `/design-process` | Access 63 design skills across the full lifecycle |
 
+### Mixing Brands
+Combine specific attributes from different design systems for unique results:
+```
+/design stripe:colors + linear:typography
+```
+> **Result:** Stripe's bold blue palette with Linear's Inter-based type system.
+
+**Granular sections:** `colors` · `typography` · `components` · `layout` · `elevation`
+
 ### Natural language
-
-The plugin also detects brand names in your prompts automatically — no command needed:
-
-- *"Diseñame esto como Google y Anthropic"*
+The plugin detects brand names in your prompts automatically — no command needed:
 - *"Build me a page like Stripe"*
+- *"Diseñame esto como Google y Anthropic"*
 
 ---
 
-## Sections for granular brand mixing
+## Projects powering this plugin
 
-`colors` · `typography` · `components` · `layout` · `elevation`
+| Project | Used for | Stars |
+|---|---|---|
+| [VoltAgent/awesome-design-md](https://github.com/VoltAgent/awesome-design-md) | 58 brand design systems | — |
+| [nextlevelbuilder/ui-ux-pro-max-skill](https://github.com/nextlevelbuilder/ui-ux-pro-max-skill) | `/ui-ux` — design system generator | 61k ⭐ |
+| [vercel-labs/agent-skills](https://github.com/vercel-labs/agent-skills) | `/guidelines` — web interface rules | 24k ⭐ |
+| [Owl-Listener/designer-skills](https://github.com/Owl-Listener/designer-skills) | `/design-process` — design lifecycle skills | 505 ⭐ |
+| [kylezantos/design-motion-principles](https://github.com/kylezantos/design-motion-principles) | `/motion` — animation audits | 256 ⭐ |
+| [Community-Access/accessibility-agents](https://github.com/Community-Access/accessibility-agents) | `/a11y` — WCAG 2.2 AA specialists | 214 ⭐ |
+
+---
+
+## Troubleshooting
+
+- **Plugin not loading:** Run `claude plugin list` to verify the plugin is registered.
+- **Brands not found:** Run `/design sync` to refresh the local design database.
+- **Hook not triggering:** Verify that "Hooks" are enabled in your Claude Code settings.
 
 ---
 
 ## Updating
 
-To pull the latest design data:
-
 ```bash
 bash ~/.claude/plugins/local/design-library/scripts/sync.sh
 ```
 
-Or use the slash command inside Claude:
-
-```
-/design sync
-```
+Or use the slash command: `/design sync`
 
 ---
 

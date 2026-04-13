@@ -82,6 +82,33 @@ if [ ! -f "$MARKETPLACE_JSON" ]; then
 JSON
 fi
 
+# ---------------------------------------------------------------------------
+# 5. Clone or update new design skill repos
+# ---------------------------------------------------------------------------
+declare -A EXTRA_REPOS=(
+  ["designs/interface-design"]="https://github.com/Dammyjay93/interface-design.git"
+  ["designs/visual-explainer"]="https://github.com/nicobailon/visual-explainer.git"
+  ["designs/anthropics-skills"]="https://github.com/anthropics/skills.git"
+  ["designs/claude-code-ui-agents"]="https://github.com/mustafakendiguzel/claude-code-ui-agents.git"
+)
+
+for repo_dir in "${!EXTRA_REPOS[@]}"; do
+  repo_url="${EXTRA_REPOS[$repo_dir]}"
+  repo_name=$(basename "$repo_url" .git)
+  full_path="$PLUGIN_DIR/$repo_dir"
+  if [ ! -d "$full_path/.git" ]; then
+    echo "Cloning $repo_name..."
+    git clone --depth=1 "$repo_url" "$full_path"
+  else
+    echo "Updating $repo_name..."
+    git -C "$full_path" fetch --depth=1 origin 2>/dev/null || true
+    git -C "$full_path" reset --hard origin/HEAD 2>/dev/null || true
+  fi
+done
+
+# ---------------------------------------------------------------------------
+# 6. Register local marketplace and install plugin
+# ---------------------------------------------------------------------------
 if command -v claude &>/dev/null; then
   if ! claude plugin marketplace list 2>/dev/null | grep -q "^local"; then
     echo "Registering local marketplace with Claude Code..."
@@ -103,7 +130,7 @@ else
 fi
 
 # ---------------------------------------------------------------------------
-# 4. Install daily cron (6am) if not already present
+# 7. Install daily cron (6am) if not already present
 # ---------------------------------------------------------------------------
 CRON_CMD="0 6 * * * $PLUGIN_DIR/scripts/sync.sh >> /tmp/design-library-sync.log 2>&1"
 if ! crontab -l 2>/dev/null | grep -qF "$PLUGIN_DIR/scripts/sync.sh"; then
@@ -115,4 +142,5 @@ fi
 
 echo ""
 echo "Sync complete. $BRAND_COUNT brands available."
+echo "New skill repos: interface-design · visual-explainer · anthropics-skills · claude-code-ui-agents"
 echo "Run /reload-plugins in Claude Code to activate the plugin."

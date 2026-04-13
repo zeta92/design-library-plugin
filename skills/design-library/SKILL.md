@@ -5,57 +5,55 @@ description: Use when working on UI, frontend, or design tasks, or when a brand 
 
 # Design Library Skill
 
+## Quick Decision Guide
+- Use **`/design [brand]`** when you want to implement a specific, existing brand identity (e.g., "Make this look like Stripe").
+- Use **`/ui-ux`** when starting a new project from scratch and you need a professional, cohesive design system generated for you.
+- Use **`/guidelines`** when you have existing code and want to audit it for professional web standards, accessibility, and best practices.
+
+## Brand Catalog & Examples
 You have access to a local library of DESIGN.md files from 58 real-world companies.
 See `/home/zeta/.claude/plugins/local/design-library/skills/design-library/references/catalog.md` for the full list, or run `/design list`.
 
-## What is a DESIGN.md
+**Examples of Brand Personas** (if available in catalog):
+- **Stripe** → Clean, minimal, developer-friendly, high-precision.
+- **Linear** → Fast, keyboard-driven, dark-first, opinionated spacing.
+- **Vercel** → High contrast, monospace accents, deployment-focused feel.
+- **Spotify** → Bold, high-energy, dark-mode centric, rhythmic.
 
-Each DESIGN.md has 9 sections:
-1. **Visual Theme & Atmosphere** — overall feel, personality
-2. **Color Palette & Roles** — primary, secondary, accent, background, text colors with hex values
-3. **Typography Rules** — font families, sizes, weights, line heights
-4. **Component Stylings** — buttons, inputs, cards, badges, navigation
-5. **Layout Principles** — grid, spacing, container widths
-6. **Depth & Elevation** — shadows, z-index, blur
-7. **Design Do's and Don'ts** — specific rules for this brand
-8. **Responsive Behavior** — breakpoints, mobile adaptations
-9. **Agent Prompt Guide** — how to instruct AI agents to produce this design
-
-> Note: Section titles vary slightly across brands (e.g., section 7 may be "Interaction & Motion" or "Dark Mode" rather than "Do's and Don'ts"). Always read the actual section headers from the loaded DESIGN.md file rather than assuming fixed names.
+> Always verify a brand is in the catalog before referencing it. Run `/design list` to see all available brands.
 
 ## How to Apply a Single Brand
-
 When a DESIGN.md has been loaded as context:
-1. Read the Color Palette section — use exact hex values
-2. Read Typography Rules — apply the font stack and scale
-3. Read Component Stylings — reproduce button, input, and card styles faithfully
-4. Read Layout Principles — use the grid and spacing system
-5. Read the Depth & Elevation section — apply shadow tokens and z-index values
-6. Read the Responsive Behavior section — respect breakpoints and mobile adaptations
-7. Respect the Do's and Don'ts section
-8. Apply the Agent Prompt Guide to your code generation approach
+1. **Read the Agent Prompt Guide first** — This section contains specific instructions on how an AI should approach code generation for this specific brand. Follow these instructions strictly.
+2. **Color Palette & Roles** — Use exact hex values for primary, secondary, accent, and semantic colors.
+3. **Typography Rules** — Apply the specific font stack, scale, and line heights.
+4. **Component Stylings** — Reproduce button, input, and card styles faithfully.
+5. **Layout & Depth** — Use the grid, spacing, and shadow/elevation tokens provided.
+6. **Responsive Behavior** — Respect the defined breakpoints and mobile adaptations.
+7. **Do's and Don'ts** — Ensure no prohibited patterns are introduced.
 
-## How to Mix Multiple Brands
-
-When mixing A + B:
-1. **Each section comes from one brand only** — never blend within a section
-2. Default assignment when not specified:
-   - Colors → Brand A (dominant)
+## Mixing Strategy (Brand A + Brand B)
+When merging two identities, follow these rules to prevent "design soup":
+1. **Section Isolation** — Never blend values within a single section. A section must belong entirely to one brand.
+2. **Default Assignment (The "Dominant" Rule)**:
+   - Colors → Brand A (Dominant)
    - Typography → Brand B
    - Components → Brand A
    - Layout → Brand B
    - Elevation → Brand A
-3. When the user specifies sections explicitly (e.g., `stripe:colors + linear:typography`), follow exactly
-4. Generate a **Fusion Summary** before producing code:
-   ```
-   Fusion: [Brand A] colors + [Brand B] typography + ...
-   Rationale: [brief explanation of why this combination works]
-   ```
-5. The first-named brand also wins for all unlisted sections (Visual Theme, Do's and Don'ts, Responsive Behavior, Agent Prompt Guide).
-6. The first-named brand wins on any section not explicitly assigned
+3. **Explicit Overrides** — If the user says "Use Brand A's colors but Brand B's typography," follow that exactly.
+4. **Fusion Summary** — Before writing code, output a "Fusion Summary" explaining which brand is providing which design tokens.
+5. **Pairing Tips**:
+   - *Safe Pairings*: Minimalist + High Contrast (e.g., Stripe + Linear).
+   - *Risky Pairings*: Playful/Organic + Brutalist — use caution with spacing.
+
+## Fallback Logic
+If a requested brand is not found in the library:
+1. Inform the user the brand is missing.
+2. Suggest the **3 closest alternatives** based on the requested brand's vibe (e.g., if they ask for a brand not in catalog, suggest similar brands from the catalog).
+3. Offer to run `/design sync` to update the library.
 
 ## Design File Location
-
 All design files are at:
 ```
 ~/.claude/plugins/local/design-library/designs/awesome-design-md/design-md/<brand>/DESIGN.md
@@ -64,5 +62,4 @@ All design files are at:
 Use the `Read` tool to load them when needed.
 
 ## Sync Status
-
 If a brand is not found, suggest running `/design sync` to update the local library.
