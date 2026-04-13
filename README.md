@@ -1,5 +1,7 @@
 # The Design Library [![v2.1.0](https://img.shields.io/badge/version-v2.1.0-green.svg)](https://github.com/zeta92/design-library-plugin)
 
+<img src="docs/cover.svg" alt="The Design Library — Claude Code plugin" width="100%"/>
+
 > Global Claude Code plugin — 58 brand design systems + 5 curated design skills, always available.
 
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](LICENSE)
