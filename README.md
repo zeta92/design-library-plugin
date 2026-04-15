@@ -130,6 +130,174 @@ Or use the slash command inside Claude:
 
 ---
 
+## Other AI coding agents
+
+The 58 brand DESIGN.md files and skill content are plain Markdown — any AI coding agent can read them. Only the plugin hooks, SKILL.md wrappers, and `/reload-plugins` step are Claude Code–specific.
+
+### Step 1 — Download design data (all agents)
+
+Clone the repo and run the sync script:
+
+```bash
+git clone https://github.com/zeta92/design-library-plugin.git ~/design-library
+bash ~/design-library/scripts/sync.sh
+```
+
+> If the `claude` CLI is not installed, the script prints a warning and skips the Claude registration steps — this is safe to ignore. The design data downloads correctly regardless.
+
+After sync, brand files are at:
+
+```
+~/design-library/designs/awesome-design-md/design-md/<brand>/DESIGN.md
+```
+
+The full brand catalog is at:
+
+```
+~/design-library/skills/design-library/references/catalog.md
+```
+
+---
+
+### Cursor
+
+Create a global rule at `~/.cursor/rules/design-library.mdc`:
+
+```markdown
+---
+description: Design Library — load brand design systems on request
+alwaysApply: false
+---
+
+A local design library with 58 brand DESIGN.md files is available at:
+~/design-library/designs/awesome-design-md/design-md/
+
+Full brand list: ~/design-library/skills/design-library/references/catalog.md
+
+When asked to design like a specific brand (e.g. "like Stripe", "como Google"):
+1. Read ~/design-library/designs/awesome-design-md/design-md/<brand>/DESIGN.md
+2. Apply its color palette, typography, component styles, and layout principles
+3. Use the "Agent Prompt Guide" section of that DESIGN.md for targeted instruction
+
+Available brands include: stripe, linear, vercel, figma, google, anthropic, notion,
+spotify, apple, and 49 more — see the catalog for the full list.
+```
+
+To attach a brand file directly in a chat, use `@file`:
+
+```
+@~/design-library/designs/awesome-design-md/design-md/stripe/DESIGN.md
+Apply the Stripe design system to this component.
+```
+
+---
+
+### Windsurf
+
+**Global rules** — add to `~/.codeium/windsurf/global_rules.md`:
+
+```markdown
+## Design Library
+
+A local design library with 58 brand DESIGN.md files is available at:
+~/design-library/designs/awesome-design-md/design-md/
+
+Brand catalog: ~/design-library/skills/design-library/references/catalog.md
+
+When working on UI tasks, read the matching DESIGN.md for brand-specific color palette,
+typography, component styles, layout principles, and the Agent Prompt Guide section.
+```
+
+**Per-project override** — add to `.windsurfrules` in your project root:
+
+```markdown
+## Design Library
+Brand DESIGN.md path: ~/design-library/designs/awesome-design-md/design-md/<brand>/DESIGN.md
+Active brand for this project: stripe
+```
+
+---
+
+### GitHub Copilot
+
+Add to `.github/copilot-instructions.md` in your project:
+
+```markdown
+## Design Library
+
+A local design library is available at ~/design-library/designs/.
+
+Brand systems: ~/design-library/designs/awesome-design-md/design-md/<brand>/DESIGN.md
+Catalog of available brands: ~/design-library/skills/design-library/references/catalog.md
+
+When working on UI or design tasks:
+- Check the catalog for available brands
+- Read the matching DESIGN.md and apply its palette, typography, and component guidelines
+- Use the "Agent Prompt Guide" section of each DESIGN.md for targeted instruction
+```
+
+---
+
+### Cline (VS Code)
+
+1. Open VS Code → Settings → search **Cline: Custom Instructions**
+2. Add:
+
+```
+A local design library with 58 brand DESIGN.md files is at:
+~/design-library/designs/awesome-design-md/design-md/
+
+See ~/design-library/skills/design-library/references/catalog.md for all available brands.
+When designing UI, read <brand>/DESIGN.md and apply its colors, typography, component
+styles, and layout. Use the "Agent Prompt Guide" section for exact usage.
+```
+
+To attach a brand file in a task, use the file picker or paste the path:
+
+```
+~/design-library/designs/awesome-design-md/design-md/stripe/DESIGN.md
+```
+
+---
+
+### Aider
+
+Pass design files with `--read` at startup:
+
+```bash
+# Load one brand
+aider --read ~/design-library/designs/awesome-design-md/design-md/stripe/DESIGN.md
+
+# Load catalog + a specific brand
+aider --read ~/design-library/skills/design-library/references/catalog.md \
+      --read ~/design-library/designs/awesome-design-md/design-md/linear/DESIGN.md
+```
+
+For a permanent project convention, create `.aider.conventions.md` in your project root:
+
+```markdown
+## Design Library
+
+Brand DESIGN.md files: ~/design-library/designs/awesome-design-md/design-md/<brand>/DESIGN.md
+Available brands: ~/design-library/skills/design-library/references/catalog.md
+
+When working on UI, load the relevant DESIGN.md and apply its design system.
+```
+
+---
+
+### Keeping design data up to date
+
+For all agents, re-run the sync script to pull the latest brand files:
+
+```bash
+bash ~/design-library/scripts/sync.sh
+```
+
+A daily cron job is installed automatically by `sync.sh` (runs at 6 am).
+
+---
+
 ## License
 
 Apache License 2.0. See [LICENSE](LICENSE).
