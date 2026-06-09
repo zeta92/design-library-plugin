@@ -28,17 +28,17 @@ if [ -f "$WORKING_DIR/package.json" ]; then
 
   if echo "$pkg" | grep -qE '"storybook"|"chromatic"|"style-dictionary"|"design-tokens"'; then
     project_type="design system / component library"
-    active_skills=("design-library" "web-design-guidelines" "designer-skills" "a11y")
+    active_skills=("design-library" "web-design-guidelines" "designer-skills" "a11y" "web-quality")
   elif echo "$pkg" | grep -qE '"framer-motion"|"@gsap/react"|"motion"' && \
        echo "$pkg" | grep -qE '"next"|"gatsby"|"astro"|"react"'; then
     project_type="UI app with animations"
-    active_skills=("design-library" "ui-ux-pro-max" "web-design-guidelines" "motion")
+    active_skills=("design-library" "ui-ux-pro-max" "web-design-guidelines" "motion" "taste")
   elif echo "$pkg" | grep -qE '"next"|"gatsby"|"astro"'; then
     project_type="web app"
-    active_skills=("design-library" "ui-ux-pro-max" "web-design-guidelines")
+    active_skills=("design-library" "ui-ux-pro-max" "web-design-guidelines" "taste" "web-quality")
   elif echo "$pkg" | grep -qE '"react"|"vue"|"svelte"|"solid"'; then
     project_type="UI app"
-    active_skills=("design-library" "ui-ux-pro-max" "web-design-guidelines")
+    active_skills=("design-library" "ui-ux-pro-max" "web-design-guidelines" "taste")
   fi
 fi
 
@@ -64,6 +64,6 @@ fi
 # ── Output Level 1 message ────────────────────────────────────────────────────
 SKILL_LIST=$(printf '%s · ' "${active_skills[@]}")
 SKILL_LIST="${SKILL_LIST% · }"
-MSG="[DESIGN SUITE ACTIVE] Project detected: ${project_type}\nSkills loaded: ${SKILL_LIST}\n\nAvailable commands:\n  /design <brand>     — load a brand design system\n  /ui-ux              — generate a complete design system\n  /guidelines         — audit UI code (100+ rules)\n  /motion             — audit animations\n  /a11y               — accessibility audit (WCAG 2.2 AA)\n  /design-process     — access 63 design skills\n  /design ?           — re-analyze project"
+MSG="[DESIGN SUITE ACTIVE] Project detected: ${project_type}\nSkills loaded: ${SKILL_LIST}\n\nAvailable commands:\n  /design <brand>     — load a brand design system\n  /ui-ux              — generate a complete design system\n  /guidelines         — audit UI code (100+ rules)\n  /motion             — audit animations\n  /a11y               — accessibility audit (WCAG 2.2 AA)\n  /taste              — anti-generic visual polish\n  /web-quality        — Lighthouse / Core Web Vitals audit\n  /design-process     — access 63 design skills\n  /design ?           — re-analyze project\n\nPlaywright MCP is bundled with this plugin — use it to verify UI changes in a real browser (screenshots, console, accessibility tree)."
 
 printf '%b' "$MSG" | jq -Rs '{"systemMessage": .}'

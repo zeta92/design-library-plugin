@@ -21,7 +21,13 @@ KW_MOTION="animat|transition|motion|hover effect|loading spinner|skeleton loader
 KW_A11Y="accessib|wcag|screen reader|\baria\b|color contrast|focus trap|keyboard nav|tab order|alt text|\ba11y\b|inclusive design|reduced motion|high contrast|semantic html|focus ring|focus.?visible|color.?blind|dyslexia|cognitive load|skip.?link|landmark|live region"
 
 # /guidelines — UI audit & web best practices
-KW_GUIDELINES="\baudit\b|review (my|this|the) (ui|design|code|component|page)|critique|check (my|this) (ui|design)|best practices|improve (this|my) (ui|design)|dark mode support|responsive design|mobile.?first|touch target|form validation|error state|empty state|loading state|\bi18n\b|internationali[sz]|right.?to.?left|\brtl\b|web vitals|performance budget|image optimi|lazy load|font loading"
+KW_GUIDELINES="\baudit\b|review (my|this|the) (ui|design|code|component|page)|critique|check (my|this) (ui|design)|best practices|improve (this|my) (ui|design)|dark mode support|responsive design|mobile.?first|touch target|form validation|error state|empty state|loading state|\bi18n\b|internationali[sz]|right.?to.?left|\brtl\b"
+
+# /web-quality — performance, Core Web Vitals, SEO (Lighthouse-based)
+KW_QUALITY="lighthouse|core web vitals|web vitals|\blcp\b|\binp\b|\bcls\b|page speed|pagespeed|performance budget|image optimi|lazy load|font loading|bundle size|\bseo\b|search ranking|time to interactive|render.?blocking|slow (page|site|load)"
+
+# /taste — anti-generic polish, visual quality of generated UI
+KW_TASTE="\bgeneric\b|\bboring\b|\bslop\b|\bbland\b|\bpolish\b|good taste|premium feel|stand out|wow factor|distinctive|anti.?slop|looks (bad|cheap|basic|plain)|more (interesting|unique|striking)|elevate (the|this|my) (ui|design|look)"
 
 # /ui-ux — generating a design system or visual identity from scratch
 KW_UIUX="design system|color palette|font pairing|typography (scale|system|hierarchy|ramp)|spacing system|generate (a |the )?(ui|design|layout|theme)|create (a )?(design system|ui|interface) for|redesign|visual identity|brand identity|style guide|component (library|system)|design tokens?|build (ui|interface) from scratch|ui kit|theme generator|moodboard|look and feel"
@@ -33,7 +39,7 @@ KW_PROCESS="wireframe|prototype|user research|user persona|user journey|informat
 KW_BRAND_TRIGGER="design|style|look|ui|interface|build|create|make|component|landing|like |inspired by|similar to|aesthetic|visual|theme"
 
 # ── Gate: exit early if no design intent at all ───────────────────────────────
-ALL_KEYWORDS="${KW_MOTION}|${KW_A11Y}|${KW_GUIDELINES}|${KW_UIUX}|${KW_PROCESS}|${KW_BRAND_TRIGGER}"
+ALL_KEYWORDS="${KW_MOTION}|${KW_A11Y}|${KW_GUIDELINES}|${KW_QUALITY}|${KW_TASTE}|${KW_UIUX}|${KW_PROCESS}|${KW_BRAND_TRIGGER}"
 if ! echo "$USER_PROMPT" | grep -qiE "$ALL_KEYWORDS"; then
   exit 0
 fi
@@ -42,12 +48,16 @@ fi
 match_motion=false
 match_a11y=false
 match_guidelines=false
+match_quality=false
+match_taste=false
 match_uiux=false
 match_process=false
 
 if echo "$USER_PROMPT" | grep -qiE "$KW_MOTION";     then match_motion=true;     fi
 if echo "$USER_PROMPT" | grep -qiE "$KW_A11Y";       then match_a11y=true;       fi
 if echo "$USER_PROMPT" | grep -qiE "$KW_GUIDELINES";  then match_guidelines=true; fi
+if echo "$USER_PROMPT" | grep -qiE "$KW_QUALITY";     then match_quality=true;    fi
+if echo "$USER_PROMPT" | grep -qiE "$KW_TASTE";       then match_taste=true;      fi
 if echo "$USER_PROMPT" | grep -qiE "$KW_UIUX";        then match_uiux=true;       fi
 if echo "$USER_PROMPT" | grep -qiE "$KW_PROCESS";     then match_process=true;    fi
 
@@ -72,6 +82,8 @@ build_skill_hints() {
   $match_motion     && hints+=" /motion"
   $match_a11y       && hints+=" /a11y"
   $match_guidelines && hints+=" /guidelines"
+  $match_quality    && hints+=" /web-quality"
+  $match_taste      && hints+=" /taste"
   $match_uiux       && hints+=" /ui-ux"
   $match_process    && hints+=" /design-process"
   echo "$hints"
@@ -81,6 +93,8 @@ skill_count=0
 $match_motion     && ((skill_count++)) || true
 $match_a11y       && ((skill_count++)) || true
 $match_guidelines && ((skill_count++)) || true
+$match_quality    && ((skill_count++)) || true
+$match_taste      && ((skill_count++)) || true
 $match_uiux       && ((skill_count++)) || true
 $match_process    && ((skill_count++)) || true
 
@@ -125,6 +139,8 @@ if [ "$skill_count" -gt 0 ]; then
   $match_motion     && WHAT+="animation/motion, "
   $match_a11y       && WHAT+="accessibility, "
   $match_guidelines && WHAT+="UI audit/best practices, "
+  $match_quality    && WHAT+="performance/web quality, "
+  $match_taste      && WHAT+="visual polish/taste, "
   $match_process    && WHAT+="design process, "
   WHAT="${WHAT%, }"  # trim trailing comma
 
@@ -140,4 +156,4 @@ fi
 
 # ── Case 3: general design intent, no specific skill or brand ─────────────────
 BRAND_COUNT=$(find "$DESIGN_MD_DIR" -maxdepth 1 -mindepth 1 -type d 2>/dev/null | wc -l | tr -d ' ')
-printf '{"systemMessage": "Design library available: %s brand design systems ready. Mention a brand name (e.g., Stripe, Linear, Vercel, Google, Anthropic) or use /design <brand> to load one. Other commands: /ui-ux · /guidelines · /motion · /a11y · /design-process"}\n' "$BRAND_COUNT"
+printf '{"systemMessage": "Design library available: %s brand design systems ready. Mention a brand name (e.g., Stripe, Linear, Vercel, Google, Anthropic) or use /design <brand> to load one. Other commands: /ui-ux · /guidelines · /motion · /a11y · /taste · /web-quality · /design-process"}\n' "$BRAND_COUNT"

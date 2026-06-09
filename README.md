@@ -2,7 +2,7 @@
 
 <img src="docs/cover.svg" alt="The Design Library — Claude Code plugin" width="100%"/>
 
-> Global Claude Code plugin — 58 brand design systems + 5 curated design skills, always available.
+> Global Claude Code plugin — 58 brand design systems + 7 curated design skills + Playwright MCP, always available.
 
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](LICENSE)
 
@@ -18,6 +18,9 @@
 - **Designer Skills** — 63 skills across the full design lifecycle (505 ⭐)
 - **Motion Design Principles** — animation audits via 3 designer perspectives (256 ⭐)
 - **Accessibility Agents** — 11 WCAG 2.2 AA specialists (214 ⭐)
+- **Taste Skill** — anti-generic visual polish with tunable variance/motion/density dials (~37k ⭐)
+- **Web Quality Skills** — Lighthouse & Core Web Vitals optimization by Addy Osmani
+- **Playwright MCP** — bundled browser automation to verify UI changes in a real browser
 
 The plugin auto-detects your project type at session start and activates the relevant skills automatically.
 
@@ -33,6 +36,9 @@ The plugin auto-detects your project type at session start and activates the rel
 | [Owl-Listener/designer-skills](https://github.com/Owl-Listener/designer-skills) | `/design-process` — 63 design lifecycle skills | 505 ⭐ |
 | [kylezantos/design-motion-principles](https://github.com/kylezantos/design-motion-principles) | `/motion` — animation audit via 3 designers | 256 ⭐ |
 | [Community-Access/accessibility-agents](https://github.com/Community-Access/accessibility-agents) | `/a11y` — 11 WCAG 2.2 AA specialist agents | 214 ⭐ |
+| [Leonxlnx/taste-skill](https://github.com/Leonxlnx/taste-skill) | `/taste` — anti-generic visual polish | 37k ⭐ |
+| [addyosmani/web-quality-skills](https://github.com/addyosmani/web-quality-skills) | `/web-quality` — Lighthouse / Core Web Vitals audits | — |
+| [microsoft/playwright-mcp](https://github.com/microsoft/playwright-mcp) | Bundled MCP — in-browser UI verification | — |
 
 ---
 
@@ -54,7 +60,7 @@ bash ~/.claude/plugins/local/design-library/scripts/sync.sh
 
 This script does everything in one shot:
 
-- Downloads all 58 brand design systems and the 5 external skill repos
+- Downloads all 58 brand design systems and the 7 external skill repos
 - Creates the local marketplace manifest needed by Claude Code
 - Registers the marketplace: `claude plugin marketplace add`
 - Installs the plugin: `claude plugin install design-library@local`
@@ -97,6 +103,8 @@ Skills cargados: design-library · ui-ux-pro-max · web-design-guidelines
 | `/guidelines` | Audit UI code against 100+ web design rules |
 | `/motion` | Audit animations via Emil Kowalski / Jakub Krehel / Jhey Tompkins |
 | `/a11y` | Run a full WCAG 2.2 AA accessibility audit |
+| `/taste` | Anti-generic visual polish — variants: `minimalist`, `brutalist`, `high-end`, `redesign`, `image-to-code` |
+| `/web-quality` | Lighthouse / Core Web Vitals audit — modes: `performance`, `cwv`, `seo`, `best-practices` |
 | `/design-process` | Access 63 design skills across the full lifecycle |
 
 ### Natural language
@@ -111,6 +119,14 @@ The plugin also detects brand names in your prompts automatically — no command
 ## Sections for granular brand mixing
 
 `colors` · `typography` · `components` · `layout` · `elevation`
+
+---
+
+## Playwright MCP (bundled)
+
+The plugin ships a `.mcp.json` that starts the [Playwright MCP server](https://github.com/microsoft/playwright-mcp) (`npx @playwright/mcp@latest`) whenever the plugin is enabled. Claude can use it to open your app in a real browser, take screenshots, inspect the accessibility tree, and verify design changes visually — closing the loop with `/guidelines`, `/a11y`, and `/web-quality`.
+
+> Requires Node.js. The first run downloads a browser binary, which may take a minute.
 
 ---
 

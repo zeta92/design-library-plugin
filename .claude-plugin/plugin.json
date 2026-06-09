@@ -1,11 +1,11 @@
 {
   "name": "design-library",
-  "version": "2.1.0",
-  "description": "A full design suite for Claude Code: 58 brand design systems + UI/UX, accessibility, motion, design guidelines, and full design-process skills. Auto-selects skills based on your project type.",
+  "version": "2.2.0",
+  "description": "A full design suite for Claude Code: 58 brand design systems + UI/UX, accessibility, motion, design guidelines, visual taste, web quality (Lighthouse/Core Web Vitals), and full design-process skills. Bundles Playwright MCP for in-browser verification. Auto-selects skills based on your project type.",
   "author": {
     "name": "zeta92"
   },
   "homepage": "https://github.com/zeta92/design-library-plugin",
   "license": "Apache-2.0",
-  "keywords": ["design", "ui", "ux", "frontend", "design-system", "brand", "accessibility", "motion", "a11y"]
+  "keywords": ["design", "ui", "ux", "frontend", "design-system", "brand", "accessibility", "motion", "a11y", "performance", "seo", "web-vitals", "taste", "playwright"]
 }
