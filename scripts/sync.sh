@@ -22,7 +22,35 @@ else
 fi
 
 # ---------------------------------------------------------------------------
-# 2. Generate catalog from actual directory listing
+# 2. Clone or update external skill repos (failure-tolerant: a network error
+#    on one repo must not abort the whole sync)
+# ---------------------------------------------------------------------------
+EXTERNAL_REPOS=(
+  "nextlevelbuilder/ui-ux-pro-max-skill ui-ux-pro-max-skill"
+  "vercel-labs/agent-skills agent-skills"
+  "Owl-Listener/designer-skills designer-skills"
+  "kylezantos/design-motion-principles design-motion-principles"
+  "Community-Access/accessibility-agents accessibility-agents"
+  "Leonxlnx/taste-skill taste-skill"
+  "addyosmani/web-quality-skills web-quality-skills"
+)
+
+for entry in "${EXTERNAL_REPOS[@]}"; do
+  repo="${entry% *}"
+  dir="$PLUGIN_DIR/designs/${entry#* }"
+  if [ ! -d "$dir/.git" ]; then
+    echo "Cloning $repo..."
+    git clone --depth=1 "https://github.com/$repo.git" "$dir" \
+      || echo "WARNING: failed to clone $repo — skipping" >&2
+  else
+    echo "Updating $repo..."
+    { git -C "$dir" fetch --depth=1 origin && git -C "$dir" reset --hard FETCH_HEAD; } \
+      || echo "WARNING: failed to update $repo — skipping" >&2
+  fi
+done
+
+# ---------------------------------------------------------------------------
+# 3. Generate catalog from actual directory listing
 # ---------------------------------------------------------------------------
 DESIGN_MD_DIR="$DESIGNS_DIR/design-md"
 if [ ! -d "$DESIGN_MD_DIR" ]; then
@@ -56,7 +84,7 @@ echo "" >> "$CATALOG_FILE"
 echo "_Total: $BRAND_COUNT brands_" >> "$CATALOG_FILE"
 
 # ---------------------------------------------------------------------------
-# 3. Register local marketplace (idempotent)
+# 4. Register local marketplace (idempotent)
 # ---------------------------------------------------------------------------
 MARKETPLACE_JSON="$LOCAL_PLUGINS_DIR/.claude-plugin/marketplace.json"
 
@@ -103,7 +131,7 @@ else
 fi
 
 # ---------------------------------------------------------------------------
-# 4. Install daily cron (6am) if not already present
+# 5. Install daily cron (6am) if not already present
 # ---------------------------------------------------------------------------
 CRON_CMD="0 6 * * * $PLUGIN_DIR/scripts/sync.sh >> /tmp/design-library-sync.log 2>&1"
 if ! crontab -l 2>/dev/null | grep -qF "$PLUGIN_DIR/scripts/sync.sh"; then
